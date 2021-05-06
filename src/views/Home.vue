@@ -5,9 +5,6 @@
         </el-aside>
 
         <el-container>
-
-
-
             <el-header>
                 <strong>VueAdmin后台管理系统</strong>
                 <div class="header-avatar">
@@ -17,8 +14,12 @@
                         {{ userInfo.username }}<i class="el-icon-arrow-down el-icon--right"></i>
                       </span>
                         <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item>个人中心</el-dropdown-item>
-                            <el-dropdown-item>退出</el-dropdown-item>
+                            <el-dropdown-item>
+                                <router-link :to="{ name: 'userCenter'}">个人中心</router-link>
+                            </el-dropdown-item>
+                            <el-dropdown-item  @click.native="logout">
+                                退出
+                            </el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
 
@@ -60,7 +61,16 @@
                 this.$axios.get("/sys/userInfo").then( res => {
                     this.userInfo = res.data.data
                 })
-            }
+            },
+          logout(){
+              this.$axios.post("/logout").then( () => {
+                localStorage.clear()
+                sessionStorage.clear()
+
+                this.$store.commit("resetState")
+                this.$router.push("/login")
+              })
+          }
         }
     }
 </script>
@@ -88,7 +98,7 @@
         background-color: #E9EEF3;
         color: #333;
         text-align: center;
-        line-height: 160px;
+        /*line-height: 160px;*/
     }
 
     .header-avatar{
@@ -107,5 +117,8 @@
     }
     .el-menu-vertical {
         height: 100%;
+    }
+    a {
+        text-decoration: none;
     }
 </style>

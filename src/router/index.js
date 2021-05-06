@@ -6,6 +6,7 @@ import Index from '../views/Index'
 import User from '../views/sys/User'
 import Role from '../views/sys/Role'
 import Menu from '../views/sys/Menu'
+import UserCenter from "../views/UserCenter";
 
 Vue.use(VueRouter);
 
@@ -35,6 +36,12 @@ const routes = [
         name: 'SysMenus',
         component: Menu
       },
+      {
+        path: '/userCenter',
+        name: 'userCenter',
+        component: UserCenter
+      },
+
 
     ]
   },
