@@ -38,3 +38,50 @@ Mock.mock('/logout','post',()=>{
     // Result.msg = "验证码错误"
     return Result
 })
+
+Mock.mock('/sys/menu/nav','get',()=>{
+
+    let nav = [
+        {
+            name: 'SysManga',
+            title: '系统管理',
+            icon: 'el-icon-s-operation',
+            component: '',
+            path: '',
+            children: [
+                {
+                    name: 'SysUser',
+                    title: '用户管理',
+                    icon: 'el-icon-s-custom',
+                    path: '/sys/users',
+                    component: 'sys/User',
+                    children: []
+                }
+            ]
+        },
+        {
+            name: 'SysTools',
+            title: '系统工具',
+            icon: 'el-icon-s-tools',
+            path: '',
+            component: '',
+            children: [
+                {
+                    name: 'SysDict',
+                    title: '数字字典',
+                    icon: 'el-icon-s-order',
+                    component: '',
+                    path: '/sys/dicts',
+                    children: []
+                },
+            ]
+        }
+    ]
+    let authoritys = []
+
+    Result.data = {
+        nav: nav,
+        authoritys: authoritys
+    }
+    return Result
+})
