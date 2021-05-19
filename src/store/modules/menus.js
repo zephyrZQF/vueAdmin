@@ -8,7 +8,13 @@ export default {
 
         menuList: [],
         permList: [],
-        hasRoutes: false
+        hasRoutes: false,
+
+        editableTabsValue: 'Index',
+        editableTabs: [{
+          title: '首页',
+          name: 'Index',
+        }],
 
       },
       mutations: {
@@ -21,7 +27,17 @@ export default {
         changeRouteStatus( state, hasRoute ){
           state.hasRoutes = hasRoute
           // sessionStorage.setItem("hasRoute", hasRoute)
-        }
+        },
+        addTab(state, tab) {
+          let index = state.editableTabs.findIndex( e => e.name == tab.name)
+          if( index === -1 ){
+            state.editableTabs.push({
+              title: tab.title,
+              name: tab.name,
+            });
+          }
+          this.editableTabsValue = tab.name;
+        },
 
       },
       actions: {},

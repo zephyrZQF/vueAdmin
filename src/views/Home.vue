@@ -31,7 +31,8 @@
             </el-header>
 
             <el-main>
-                <router-view></router-view>
+                <Tabs></Tabs>
+                <router-view/>
             </el-main>
         </el-container>
     </el-container>
@@ -39,20 +40,23 @@
 
 <script>
     import SideMenu from "./inc/SideMenu"
+    import Tabs from "./inc/Tabs"
+
     export default {
-        name: "Home",
-        components:{
-            SideMenu
-        },
-        data() {
-            return {
-                userInfo: {
-                    id: "",
-                    username:"",
-                    avatar:""
-                }
+      name: "Home",
+
+      data() {
+        return {
+            userInfo: {
+                id: "",
+                username:"",
+                avatar:""
             }
+        }
         },
+      components:{
+            SideMenu,Tabs
+          },
         created() {
             this.getUserInfo()
         },
@@ -99,6 +103,7 @@
         color: #333;
         text-align: center;
         /*line-height: 160px;*/
+        padding: 0;
     }
 
     .header-avatar{

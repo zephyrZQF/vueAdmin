@@ -15,13 +15,17 @@
         userInfo: {
           id: "",
           username:"",
-          avatar:""
+          avatar:"",
+          seconds: 0
         }
       }
 
     },
     created() {
       this.getUserInfo()
+      setInterval( ()=> {
+        this.seconds ++;
+      }, 1000)
     },
     methods: {
       getUserInfo() {

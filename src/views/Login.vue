@@ -69,7 +69,7 @@
 
                             const jwt = res.headers['authorization']
                             this.$store.commit('SET_TOKEN', jwt)
-                            this.$router.push("Index.vue")
+                            this.$router.push("Home.vue")
                         })
 
                     } else {
