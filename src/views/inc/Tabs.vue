@@ -44,6 +44,11 @@
       removeTab(targetName) {
         let tabs = this.editableTabs;
         let activeName = this.editableTabsValue;
+
+        if( targetName === 'Index'){
+          return
+        }
+
         if (activeName === targetName) {
           tabs.forEach((tab, index) => {
             if (tab.name === targetName) {
@@ -57,6 +62,8 @@
 
         this.editableTabsValue = activeName;
         this.editableTabs = tabs.filter(tab => tab.name !== targetName);
+
+        this.$router.push({name: activeName.name})
       },
       clickTab (target) {
          this.$router.push({name:target.name})

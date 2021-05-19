@@ -4,6 +4,28 @@
   </div>
 </template>
 
+<script>
+  export default {
+    name: "App",
+    watch: {
+      $route(to, from){
+        console.log("to")
+        console.log(to)
+        console.log(from)
+
+        if(to.path != '/login'){
+          let obj = {
+            name: to.name,
+            title: to.meta.title
+          }
+
+          this.$store.commit("addTab",obj)
+        }
+      }
+    }
+  }
+</script>
+
 <style>
   html,body,#app{
     height: 100%;
